@@ -1,4 +1,4 @@
-import { Controller, UseInterceptors, Post, Body, Get } from "@nestjs/common";
+import { Controller, UseInterceptors, Post, Body, Get, Delete, Param } from "@nestjs/common";
 import { TransformInterceptor } from "src/interceptors/transform.interceptor";
 import { failedResponse, successResponse } from "src/jsonResponse";
 import { UserService } from "./user.service";
@@ -32,6 +32,11 @@ export class UserController {
       return successResponse(users)
     }
     return failedResponse(this.tempErrorWord)
+  }
+
+  @Delete(':id')
+  async deleteUser(@Param('id') id: Promise<any>) {
+    const user = await this.userService.deleteUser(id)
   }
 
 }
