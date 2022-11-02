@@ -12,4 +12,10 @@ export class UserService {
   createUser(data: any): Promise<User> {
     return this.userRepo.save(data as any);
   }
+
+  getAllUsers(): Promise<User[]> {
+    return this.userRepo
+      .createQueryBuilder('users')
+      .getMany()
+  }
 }
