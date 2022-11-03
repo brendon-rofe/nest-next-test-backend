@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository, DeleteResult } from "typeorm";
+import { Repository, DeleteResult, UpdateResult } from "typeorm";
 import { User } from "./user.entity";
 
 @Injectable()
@@ -17,6 +17,10 @@ export class UserService {
     return this.userRepo
       .createQueryBuilder('users')
       .getMany()
+  }
+
+  async updateUser(id: any, data: any): Promise<UpdateResult> {
+    return await this.userRepo.update(id, data);
   }
 
   async deleteUser(id: any): Promise<DeleteResult> {
