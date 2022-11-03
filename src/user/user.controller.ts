@@ -2,7 +2,6 @@ import { Controller, UseInterceptors, Post, Body, Get, Delete, Param, Put } from
 import { TransformInterceptor } from "src/interceptors/transform.interceptor";
 import { failedResponse, successResponse } from "src/jsonResponse";
 import { UserService } from "./user.service";
-import { User } from "./user.entity";
 
 
 @Controller('users')
